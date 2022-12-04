@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block body %}
+<div class="container-fluid max-width:100%">
+<div class="jumbotron " style="background: url(static/404error.gif) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 700px;">
+    <h1 class="display-4">Sorry For The Inconvenience</h1>
+    <p class="lead">Search length should not be greater then 30 words</p>
+    <hr class="my-4">
+    <p>Search item <b>{{ query }}</b> Not Found</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">Back to Home Page</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

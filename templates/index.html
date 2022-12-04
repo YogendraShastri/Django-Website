@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}My amazing blog{% endblock %}
+{% if messages %}
+{% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
+{% endif %}
+{% block body %}
+<div class="container my-3">
+    <div class="row mb-2 p-2">
+      {% if myposts|length < 1%}
+      <div class="container">
+      <pre>
+      Your Search - <b>{{ query }}</b>- did not match any documents.
+      Suggestions:
+              * Make sure that all words are spelled correctly.
+              * Try different keywords.
+              * Try more general keywords.
+    </pre>
+    </div>
+      {% endif %}
+      {% for item in myposts %}
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+              <strong class="d-inline-block mb-2 text-primary"> good</strong>
+              <h3 class="mb-0">
+                <a class="text-dark" href="#">{{ item.p_title }}</a>
+              </h3>
+              <div class="mb-1 text-muted">Nov 12</div>
+              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+              <a href="blogPost/{{ item.p_id }}">Continue reading</a>
+            </div>
+            <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: auto;" src="./{{ item.p_thumb }}" data-holder-rendered="true">
+          </div>
+        </div>
+        {% endfor %}
+{% endblock %}
